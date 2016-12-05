@@ -7,8 +7,11 @@ define([
     'reduxLogger',
     'reduxThunk',
     'ReactDom',
+    'url/service',
     'interaction/reducer',
     'interaction/interaction',
+    'interaction/actions',
+    'interaction/service',
     'ui/animation/animation'], function (_Promise,
                                          _fetch,
                                          React,
@@ -17,8 +20,11 @@ define([
                                          reduxLogger,
                                          thunkMiddleware,
                                          ReactDOM,
+                                         UrlService,
                                          reducer,
                                          Interaction,
+                                         actions,
+                                         InteractionService,
                                          animation) {
     var Provider = reactRedux.Provider;
     var loggerMiddleware = reduxLogger();
@@ -29,6 +35,13 @@ define([
             thunkMiddleware.default,
             loggerMiddleware
         ));
+
+    var interactionId = UrlService.extractUrl(location.pathname)[0];
+
+    store.dispatch({
+        type: actions.boot,
+        value: { vote: InteractionService.getTempVote(interactionId) }
+    });
 
     ReactDOM.render(<Provider store={store}>
             <Interaction />

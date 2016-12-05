@@ -3,7 +3,11 @@ var expect = require('expect.js');
 var requirejs = require('requirejs');
 
 requirejs.config({
-    baseUrl: 'public/js/app'
+    baseUrl: 'public/js/app',
+    paths: {
+        storage: 'storage/storage',
+        _: '../../../node_modules/lodash/lodash.min',
+    }
 });
 
 describe('interaction reducer', function () {
@@ -15,9 +19,24 @@ describe('interaction reducer', function () {
         }.bind(this))
     });
 
-    it('should save selected item', function () {
+    it('should indicate selection of item', function () {
         var result = this.Reducer(null, { type: this.Actions.selectInteractionItem.IN_PROGRESS, value: 'action1'});
 
         expect(result.selectedItem).to.eql('action1');
+        expect(result.voteInProgress).to.equal(true);
+        expect(result.canVoteAgain).to.equal(false);
+    });
+
+    it('should indicate selection end of item', function () {
+        var result = this.Reducer(null, { type: this.Actions.selectInteractionItem.SUCCESS});
+
+        expect(result.voteInProgress).to.equal(false);
+    });
+
+    it('should not change voteInProgress after save interaction vote', function () {
+        var state = { voteInProgress: true };
+        var result = this.Reducer(state, { type: this.Actions.voteInteraction.SUCCESS });
+
+        expect(result.voteInProgress).to.equal(true);
     });
 });

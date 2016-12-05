@@ -29,9 +29,11 @@
     "redux-thunk": "^2.1.0",
     "reselect": "^2.5.4",
     "socket.io": "^1.6.0",
-    "whatwg-fetch": "^2.0.1"
+    "whatwg-fetch": "^2.0.1",
+    "download": "^4.4.3"
   },
   "devDependencies": {
+    "astrolabe": "^0.3.6",
     "babel-plugin-transform-react-jsx": "^6.8.0",
     "eslint": "^3.11.0",
     "eslint-plugin-react": "^6.7.1",
@@ -42,7 +44,10 @@
     "gulp-mocha": "^3.0.1",
     "gulp-uglify": "^2.0.0",
     "gulp-watch": "^4.3.11",
+    "mocha-jenkins-reporter": "^0.3.1",
+    "mockery": "^2.0.0",
     "pump": "^1.0.1",
+    "random-js": "^1.0.8",
     "requirejs": "^2.3.2",
     "run-sequence": "^1.2.2"
   }
