@@ -13,7 +13,7 @@ define(['react'], function (React) {
                 <div className="md-title ui-text-align--center margin--vertical--big ui-text--white">SEE RESULTS ON THE
                     SCREEN!
                 </div>
-                <button onClick={this.props.restartVote} className="demo__option margin--vertical--big ui-text-align--center">
+                <button id="oneMoreTime" onClick={this.props.restartVote} className="demo__option margin--vertical--big ui-text-align--center">
                     VOTE AGAIN!
                 </button>
             </div>
@@ -42,11 +42,11 @@ define(['react'], function (React) {
                 </div>
                 <div>
                     <div className="buttons flex row space-around">
-                        <button onClick={this.onClick.bind(this, 'vettel')}
+                        <button id="voteVettel" onClick={this.onClick.bind(this, 'vettel')}
                                 className="text demo__option margin--vertical--medium ui-text-align--center animatable no-margin--bottom">
                             SEBASTIAN <br />VETTEL
                         </button>
-                        <button onClick={this.onClick.bind(this, 'hamilton')}
+                        <button id="voteHamilton" onClick={this.onClick.bind(this, 'hamilton')}
                                 className="text demo__option margin--vertical--medium ui-text-align--center animatable">
                             LEWIS <br/> HAMILTON
                         </button>

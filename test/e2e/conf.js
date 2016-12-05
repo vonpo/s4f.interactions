@@ -6,6 +6,7 @@ exports.config = {
 		'vote-winner': 'specs/vote/vote-winner.spec.js',
 		'vote-delayed': 'specs/vote/vote-delayed.spec.js',
 		'vote-best-player': 'specs/vote/vote-best-player.spec.js',
+		'vote-demo': 'specs/vote/vote-demo.spec.js',
 		'vote-jubileusz': 'specs/vote/vote-jubileusz.spec.js',
 		'zawodnik': 'specs/vote/vote-zawodnik.spec.js',
 		smoke: 'smoke.js',
