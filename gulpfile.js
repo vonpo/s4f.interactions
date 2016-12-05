@@ -28,6 +28,18 @@ gulp.task('test:unit', function () {
     });
 });
 
+gulp.task('test:unit:backend', function () {
+    return gulp.src('test/unit/**/*.spec.js', {read: false})
+        .pipe(mocha({
+            'reporter': 'mocha-jenkins-reporter',
+            'reporterOptions': {
+                'junit_report_name': 'Tests',
+                'junit_report_path': 'unit.xml',
+                'junit_report_stack': 1
+            }
+        }));
+});
+
 gulp.task('clean', function () {
     return gulp.src('temp', {read: false})
         .pipe(clean());

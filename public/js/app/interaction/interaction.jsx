@@ -5,25 +5,29 @@ define([
     '_',
     'classnames',
     'interaction/actions',
-    'url/service'], function (React,
-                              ReactRedux,
-                              Reselect,
-                              _,
-                              classnames,
-                              InteractionActions,
-                              UrlService) {
+    'url/service',
+    'interaction/service'], function (React,
+                                      ReactRedux,
+                                      Reselect,
+                                      _,
+                                      classnames,
+                                      InteractionActions,
+                                      UrlService,
+                                      InteractionService) {
     var getInteraction = function (data) {
         return data;
     };
+    var HeaderC;
 
     var Interaction = React.createClass({
         getInitialState: function () {
+            this.interactionId = UrlService.extractUrl(location.pathname)[0];
+
             return {
                 anchoredToTop: true
             };
         },
         componentDidMount: function () {
-            this.interactionId = UrlService.extractUrl(location.pathname)[0];
             this.props.fetchInteraction(this.interactionId);
             this.onScroll = _.throttle(function () {
                 var header = this.header.getBoundingClientRect();
@@ -35,24 +39,32 @@ define([
                     'interaction/' + this.interactionId + '/footer',
                     'interaction/' + this.interactionId + '/content'],
                 function (HeaderContent, FooterContent, Content) {
-                    this.HeaderContent = HeaderContent;
+                    HeaderC = this.HeaderContent = HeaderContent;
                     this.FooterContent = FooterContent;
                     this.Content = Content;
                     this.forceUpdate();
 
                 }.bind(this));
 
-            window.addEventListener('scroll', this.onScroll)
+            window.addEventListener('scroll', this.onScroll);
+            this.props.canDoNextVote(InteractionService.getTempVote(this.interactionId));
         },
         componentWillUnmount: function () {
-            window.removeEventListener('scroll', this.onScroll)
+            window.removeEventListener('scroll', this.onScroll);
         },
-        onSelectItem: function(option) {
-            if(this.props.selectedItem) {
+        onSelectItem: function (option) {
+            if (this.props.selectedItem) {
                 return;
             }
-            console.info('on select item');
-            this.props.selectItem(option);
+
+            this.props.selectItem(option, this.interactionId);
+        },
+        onSelectAnimationDone: function () {
+            this.props.selectItemDone();
+            window.scrollTo(0, 0);
+        },
+        restartVote: function () {
+            this.props.restartVote();
         },
         render: function () {
             if (!this.props.interaction || !this.HeaderContent) {
@@ -61,21 +73,29 @@ define([
 
             var style = classnames('interaction flex max-height', this.props.interaction.data.cssClass);
 
-            return <div className={style} ref={function (h) {this.header = h}.bind(this)}>
-                {React.createElement(this.HeaderContent)}
-                { this.props.interaction.data.options.map(function (question) {
-                    return React.createElement(this.Content, {
-                        question: question,
-                        key: question.option,
-                        transition: typeof this.props.selectedItem !== 'undefined',
-                        selected: question.option === this.props.selectedItem,
-                        onClick: this.onSelectItem
-                    });
-                }.bind(this))}
+            return <div className={style} ref={function (h) {
+                this.header = h
+            }.bind(this)}>
+                {React.createElement(this.HeaderContent, {
+                    vote: this.props.vote,
+                    voted: this.props.voted,
+                    wait: !this.props.canVoteAgain,
+                    restartVote: this.restartVote
+                })}
                 {React.createElement(this.FooterContent, {
                     anchoredToTop: this.state.anchoredToTop,
                     anchoredToBottom: this.state.anchoredToBottom
                 })}
+                { this.props.vote ? this.props.interaction.data.options.map(function (question) {
+                    return React.createElement(this.Content, {
+                        question: question,
+                        key: question.option,
+                        onSelectAnimationDone: this.onSelectAnimationDone,
+                        transition: typeof this.props.selectedItem !== 'undefined',
+                        selected: question.option === this.props.selectedItem,
+                        onClick: this.onSelectItem
+                    });
+                }.bind(this)) : null}
             </div>;
         }
     });
@@ -85,15 +105,30 @@ define([
         function (data) {
             return {
                 interaction: data.interaction,
-                selectedItem: data.selectedItem
+                selectedItem: data.selectedItem,
+                canVoteAgain: data.canVoteAgain,
+                vote: data.phase === 'vote' || data.voteInProgress === true,
+                voted: data.phase === 'voteDone' && data.voteInProgress === false
             }
         }
     );
 
     var mapDispatchToProps = function (dispatch) {
         return {
-            selectItem: function(option) {
+            canDoNextVote: function (tempVote) {
+              dispatch(InteractionActions.canVoteAgain.action(tempVote))
+            },
+            restartVote: function () {
+              dispatch({type: InteractionActions.restart})
+            },
+            selectItemDone: function () {
+                dispatch({type: InteractionActions.selectInteractionItem.SUCCESS})
+            },
+            selectItem: function (option, interactionId) {
                 dispatch(InteractionActions.selectInteractionItem.action(option))
+                    .then(function () {
+                        dispatch(InteractionActions.canVoteAgain.action(InteractionService.getTempVote(interactionId)))
+                    })
             },
             fetchInteraction: function (name) {
                 dispatch(InteractionActions.getInteraction.action(name))

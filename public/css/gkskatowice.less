@@ -1,6 +1,6 @@
 .header--katowice-bg {
   background: url(/img/katowice/header.jpg);
-  background-size: contain;
+  background-size: cover;
 }
 
 .header--katowice-player {
@@ -167,12 +167,72 @@
 }
 
 .katowice-player {
+  .up, .down {
+    width: 58px;
+    height: 31px;
+    margin: 0;
+    border: none;
+    padding: 0;
+    -webkit-transition: opacity .5s;
+    transition: opacity .5s;
+
+    &.transparent {
+      opacity: 0.5;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .down {
+    background: url(/img/zgorzelec/down.png) top center no-repeat;
+  }
+
+  .up {
+    background: url(/img/zgorzelec/up.png) top center no-repeat;
+  }
+
+  .button--gkskatowice {
+    font-family: 'Play', sans-serif;
+    background-color: #076533!important;
+    padding: .3rem 1rem;
+    color: #fff;
+    white-space: normal;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 32px;
+    text-shadow: 1px 1px 2px #000;
+    border:  none;
+    border-radius: 3px;
+  }
+
+  .question-select {
+    padding-bottom: 2rem;
+  }
+
   .question-text {
     color: white;
-    font-size: 24pt;
     text-shadow: 1px 1px 2px #000;
+
+    &.big {
+      font-size: 24pt;
+    }
   }
   .question__buttons:last-child {
     margin-bottom: 2rem;
   }
+
+  &>div:nth-child(3) {
+    margin-top: -2rem;
+  }
+}
+
+.header__line--katowice.center.bottom {
+  top: 0;
+  bottom: 0;
+  position: absolute;
+  left: 30px;
+  right: 30px;
+  background-color: #000;
 }
