@@ -17,7 +17,6 @@ define([
     var getInteraction = function (data) {
         return data;
     };
-    var HeaderC;
 
     var Interaction = React.createClass({
         getInitialState: function () {
@@ -27,6 +26,22 @@ define([
                 anchoredToTop: true
             };
         },
+        componentWillReceiveProps: function (nextProps) {
+            if(nextProps.interaction && !this.props.interaction) {
+                var directory = nextProps.interaction.data.directory;
+
+                require(['interaction/' + directory + '/header',
+                        'interaction/' + directory + '/footer',
+                        'interaction/' + directory + '/content'],
+                    function (HeaderContent, FooterContent, Content) {
+                        this.HeaderContent = HeaderContent;
+                        this.FooterContent = FooterContent;
+                        this.Content = Content;
+                        this.forceUpdate();
+
+                    }.bind(this));
+            }
+        },
         componentDidMount: function () {
             this.props.fetchInteraction(this.interactionId);
             this.onScroll = _.throttle(function () {
@@ -35,22 +50,13 @@ define([
 
             }.bind(this), 100);
 
-            require(['interaction/' + this.interactionId + '/header',
-                    'interaction/' + this.interactionId + '/footer',
-                    'interaction/' + this.interactionId + '/content'],
-                function (HeaderContent, FooterContent, Content) {
-                    HeaderC = this.HeaderContent = HeaderContent;
-                    this.FooterContent = FooterContent;
-                    this.Content = Content;
-                    this.forceUpdate();
-
-                }.bind(this));
-
+            window.addEventListener('resize', this.onScroll);
             window.addEventListener('scroll', this.onScroll);
             this.props.canDoNextVote(InteractionService.getTempVote(this.interactionId));
         },
         componentWillUnmount: function () {
             window.removeEventListener('scroll', this.onScroll);
+            window.removeEventListener('resize', this.onScroll);
         },
         onSelectItem: function (option) {
             if (this.props.selectedItem) {
@@ -80,7 +86,9 @@ define([
                     vote: this.props.vote,
                     voted: this.props.voted,
                     wait: !this.props.canVoteAgain,
-                    restartVote: this.restartVote
+                    restartVote: this.restartVote,
+                    selectItemDone: this.onSelectAnimationDone,
+                    onClick: this.onSelectItem
                 })}
                 {React.createElement(this.FooterContent, {
                     anchoredToTop: this.state.anchoredToTop,
