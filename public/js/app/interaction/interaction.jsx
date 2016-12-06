@@ -87,6 +87,7 @@ define([
                     voted: this.props.voted,
                     wait: !this.props.canVoteAgain,
                     restartVote: this.restartVote,
+                    anchoredToTop: this.state.anchoredToTop,
                     selectItemDone: this.onSelectAnimationDone,
                     onClick: this.onSelectItem
                 })}
