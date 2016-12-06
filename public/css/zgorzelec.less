@@ -1,0 +1,128 @@
+.zgorzelec-gradient {
+  background: #a12520;
+  height: 12px;
+  background:-webkit-linear-gradient(right, #a12520, #aa5a21);
+  background: -moz-linear-gradient(right, #a12520, #aa5a21);
+  background: -ms-linear-gradient(right, #a12520, #aa5a21);
+  background: -o-linear-gradient(right, #a12520, #aa5a21);
+  background: linear-gradient(to left, #a12520, #aa5a21);
+}
+
+.font-color--zgorzelec--primary {
+  color: #041a49;
+}
+
+.zgorzelec1 {
+  background: url(/img/zgorzelec/tlo_od_gory.jpg) top center no-repeat;
+  background-size: cover;
+  align-items: center;
+
+  //&.vote {
+  //  padding-bottom: 75px;
+  //}
+
+  .question-text {
+    font-size: 24pt;
+    color: #fff;
+  }
+
+  .button {
+    background-color: #041a49!important;
+    padding: .3rem 1rem;
+    color: #fff;
+    white-space: normal;
+    border: none;
+    letter-spacing: .010em;
+    border-radius: 3px;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 32px;
+  }
+
+  .ui-text-shadow {
+    text-shadow: 1px 1px 2px #000;
+  }
+
+  .question__buttons {
+    background: url(/img/zgorzelec/guzik.png) top center no-repeat;
+    background-size: contain;
+    font-size: 20pt;
+    color: #fff;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 320px;
+    width: 100%;
+    height: 72px;
+    padding: 0 .5rem;
+
+    &:last-child {
+      margin-bottom: 5rem;
+    }
+  }
+
+  .question--zgorzelec {
+    margin: 65px auto 0 auto;
+    background: url('/img/zgorzelec/apla.png') no-repeat top center;
+    background-size: contain;
+    font-size: 20pt;
+    width: 309px;
+    height: 116px;
+  }
+
+  .question--zgorzelec > div {
+    margin-top: -10px;
+  }
+
+
+  .header--zgorzelec-music {
+    font-size: 24pt;
+    text-align: center;
+
+    &.anchored-top {
+      .header__image {
+        width: 175px;
+        height: 150px;
+      }
+    }
+
+    .header__image {
+      transition: 0.5s all ease-in;
+      width: 100px;
+      height: 90px;
+    }
+
+    .half-bg {
+      background: url('/img/zgorzelec/bg_player.png') repeat;
+      left: 0;
+      top: 0;
+      height: 54%;
+      position: absolute;
+      width: 100%;
+    }
+
+    .line {
+      position: absolute;
+      top: 52%;
+      left:0;
+      bottom: 0;
+      height: 12px;
+      width: 100%;
+      z-index: 2;
+    }
+  }
+
+  .footer {
+    background-color: white;
+    width:100%;
+    height: auto;
+    bottom: 0;
+    left: 0;
+    transition: 0.5s all ease-in;
+
+    &.hidden {
+      bottom: -67px;
+    }
+  }
+}

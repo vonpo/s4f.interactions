@@ -3,6 +3,7 @@
 @import "interaction";
 @import "gkskatowice";
 @import "demo";
+@import "zgorzelec";
 
 body, html {
   margin: 0;
@@ -23,3 +24,20 @@ button {
   cursor: pointer;
 }
 
+.animatable.radio--not-selected {
+  opacity: 0;
+  transform: perspective(100px) translateZ(-300px);
+}
+
+.animatable.radio--selected{
+  opacity: 0;
+  transform: perspective(300px) translateZ(250px);
+  transform-origin: 50% 50% !important;
+}
+
+.animatable {
+  transition-property: transform, opacity;
+  transition-duration: .8s;
+  transition-timing-function:  ease-in;
+  z-index: 1;
+}
