@@ -44,11 +44,11 @@ define([
         },
         componentDidMount: function () {
             this.props.fetchInteraction(this.interactionId);
-            this.onScroll = _.throttle(function () {
+            this.onScroll = _.debounce(function () {
                 var header = this.header.getBoundingClientRect();
                 this.setState({anchoredToTop: header.top >= 0, anchoredToBottom: window.innerHeight === header.bottom})
 
-            }.bind(this), 100);
+            }.bind(this), 50);
 
             window.addEventListener('resize', this.onScroll);
             window.addEventListener('scroll', this.onScroll);
