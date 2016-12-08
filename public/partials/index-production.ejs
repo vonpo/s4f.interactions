@@ -5,11 +5,13 @@
     <base href="/">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="">
+    <meta name="mobile-web-app-capable" content="yes">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
     <title>screen4fans</title>
     <link href="https://fonts.googleapis.com/css?family=Play:700&subset=latin-ext" rel="stylesheet">
     <link rel="stylesheet" href='/css/main.css'>
     <style type="text/css">
+
         [ng-cloak] {
             display: none;
         }
@@ -87,19 +89,15 @@
             <div class="rect5"></div>
         </div>
     </div>
-    <div id="main" style="display:none;"></div>
 </div>
-<div id="content" class="flex column center center-items max-height" style="background-color:blue"></div>
+<div id="content" class="ui-transparent"></div>
 <script>
     window.bigScreen = <%- JSON.stringify(config) %>
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.2/require.min.js"></script>
-<script src="js/all.min.js"></script>
+<script data-main="js/entry"  src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.2/require.min.js"></script>
+<script src="js/main.js"></script>
 <script>
-    requirejs(['main'], function (allMin) {
-        console.info(allMin, 'xxx')
-
-    });
+    requirejs(['main']);
 </script>
 </body>
 </html>

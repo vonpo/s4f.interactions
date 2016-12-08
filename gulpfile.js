@@ -1,22 +1,11 @@
 var gulp = require('gulp');
-var uglify = require('gulp-uglify');
-var pump = require('pump');
 var concat = require('gulp-concat');
-var clean = require('gulp-clean');
 var mocha = require('gulp-mocha');
 var watch = require('gulp-watch');
+var jsx = require('gulp-jsx');
 
 var runSequence = require('run-sequence');
-
-gulp.task('uglifyScripts', function (cb) {
-    pump([
-            gulp.src(['public/js/**/main.js', 'public/js/**/test.js']),
-            uglify(),
-            gulp.dest('temp')
-        ],
-        cb
-    );
-});
+var requirejsOptimize = require('gulp-requirejs-optimize');
 
 gulp.task('test:unit', function () {
     return watch(['public/js/**/*.js'], function () {
@@ -40,19 +29,26 @@ gulp.task('test:unit:backend', function () {
         }));
 });
 
-gulp.task('clean', function () {
-    return gulp.src('temp', {read: false})
-        .pipe(clean());
-});
-
-gulp.task('concatScripts', function() {
-    return gulp.src([
-        //'node_modules/react/dist/react.js',
-        // 'node_modules/react-dom/dist/react-dom.js',
-        'temp/**/*.js',
-        ])
-        .pipe(concat('all.min.js'))
+gulp.task('optimizer', function () {
+    return gulp.src('public/js/app/main.js')
+        .pipe(requirejsOptimize({
+            baseUrl: './public/js/app',
+            paths: {
+                react: '../../../node_modules/react/dist/react.min',
+                ReactDom: '../../../node_modules/react-dom/dist/react-dom.min',
+                ReactRouter: '../../../node_modules/react-router/umd/ReactRouter.min',
+                storage: 'storage/storage',
+                fetch: '../../../node_modules/whatwg-fetch/fetch',
+                Promise: '../../../node_modules/promise-polyfill/promise.min',
+                redux: '../../../node_modules/redux/dist/redux',
+                ReactRedux: '../../../node_modules/react-redux/dist/react-redux.min',
+                reduxLogger: '../../../node_modules/redux-logger/dist/index.min',
+                reduxThunk: '../../../node_modules/redux-thunk/dist/redux-thunk.min',
+                Reselect: '../../../node_modules/reselect/dist/reselect',
+                _: '../../../node_modules/lodash/lodash.min',
+                classnames: '../../../node_modules/classnames/index'
+            },
+        }))
         .pipe(gulp.dest('public/js'));
 });
-
-gulp.task('default', done => runSequence('uglifyScripts', 'concatScripts', 'clean', done));
+gulp.task('default', done => runSequence('optimizer', done));
