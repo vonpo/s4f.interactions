@@ -7,12 +7,22 @@ define(['storage'], function (storage) {
         return date.getYear() + '' + date.getMonth() + '' + date.getDate();
     }
 
+    function updateUrl(interaction) {
+        var history = typeof window !== 'undefined' && window.history;
+
+        if(!history) {
+            return;
+        }
+
+        history.pushState(null, document.title, interaction);
+    }
     function handlePollResult() {
         return function (response) {
             var poll = response.suggestActivePoll;
 
             if (poll && !poll.finished) {
                 storage.saveLocal('tempAnswer' + poll.name + getTimeStamp(), null);
+                updateUrl(poll.name);
                 return Promise.resolve(poll);
             }
 

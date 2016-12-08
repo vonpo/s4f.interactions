@@ -12,14 +12,186 @@
   color: #041a49;
 }
 
+.zgorzelec2, .zgorzelec1 {
+  .half-bg {
+    background: url('/img/zgorzelec/bg_player.png') repeat;
+    left: 0;
+    top: 0;
+    height: 54%;
+    position: absolute;
+    width: 100%;
+  }
+
+  .footer {
+    background-color: white;
+    width:100%;
+    height: auto;
+    bottom: 0;
+    left: 0;
+    transition: 0.5s all ease-in;
+
+    &.hidden {
+      bottom: -67px;
+    }
+  }
+}
+
+.zgorzelec2 {
+  background: url(/img/zgorzelec/bg_player.png);
+
+  .question {
+    padding: 65px 0;
+    background: url('/img/zgorzelec/zdj_pod_napisy.jpg') no-repeat;
+    background-size: cover;
+    width: 100%;
+    z-index:5;
+
+    .text {
+      font-size: 24pt;
+      text-shadow: 1px 1px 2px #000;
+      color: #fff;
+
+      &.small {
+        font-size: 16pt;
+      }
+    }
+
+    .button {
+      background-color: #041a49;
+      padding: .3rem 1rem;
+      color: #fff;
+      border-bottom: none;
+      white-space: normal;
+      letter-spacing: .010em;
+      border-radius: 3px;
+      border: 0;
+      font-size: 24px;
+      max-width: 90%;
+    }
+  }
+
+  .question__buttons {
+    background: url('/img/zgorzelec/zawodnik-button.png') no-repeat top center;
+    background-size: contain;
+    &:last-child {
+      margin-bottom: 5rem;
+    }
+
+    .question_buttons__container {
+      width: 320px;
+      height: 69px;
+    }
+
+    .number {
+      position: absolute;
+      color: black;
+      left: 25%;
+      top: 6%;
+    }
+
+    .radio-question__image {
+      width: 64px;
+      height: 54px;
+      position: absolute;
+      left: 3%;
+      top: 8%;
+    }
+
+    .answer {
+      font-size: 20px;
+      position: absolute;
+      left: 26%;
+      top: 43%;
+      width: 220px;
+      color: #fff;
+    }
+
+    @media all and (min-width: 450px) {
+      .question__buttons {
+        background: url('/img/zgorzelec/zawodnik-button_big.png') no-repeat top center;
+      }
+
+      .question_buttons__container {
+        width: 450px;
+        height: 92px;
+      }
+
+      .radio-question__image {
+        width: 92px;
+        height: 72px;
+        left: 4%;
+        top: 9%;
+      }
+
+      .answer {
+        left: 27%;
+        top: 50%;
+      }
+
+      .number {
+        left: 27%;
+      }
+    }
+  }
+
+
+  .header {
+    transition: 0.5s all ease-in;
+    color: #fff;
+
+    .image {
+      transition: 0.5s all ease-in;
+      width: 80px;
+      height: 70px
+    }
+
+    .left {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 75px;
+    }
+
+    .right {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      height: 75px;
+    }
+
+    .line {
+      position: absolute;
+      top: 52%;
+      left:0;
+      transform: translateY(-50%);
+      height: 12px;
+      width: 100%;
+      z-index: 2;
+    }
+
+    .long-line {
+      box-sizing: border-box;
+      position: absolute;
+      padding-left: 69px;
+      padding-right: 69px;
+      right: 0;
+      bottom: 0;
+      height: 10px;
+      left: 0;
+      overflow: hidden;
+    }
+  }
+
+  .anchored-top.header .image {
+    height: 150px;
+    width: 172px;
+  }
+}
+
 .zgorzelec1 {
   background: url(/img/zgorzelec/tlo_od_gory.jpg) top center no-repeat;
   background-size: cover;
   align-items: center;
-
-  //&.vote {
-  //  padding-bottom: 75px;
-  //}
 
   .question-text {
     font-size: 24pt;
@@ -93,15 +265,6 @@
       height: 90px;
     }
 
-    .half-bg {
-      background: url('/img/zgorzelec/bg_player.png') repeat;
-      left: 0;
-      top: 0;
-      height: 54%;
-      position: absolute;
-      width: 100%;
-    }
-
     .line {
       position: absolute;
       top: 52%;
@@ -110,19 +273,6 @@
       height: 12px;
       width: 100%;
       z-index: 2;
-    }
-  }
-
-  .footer {
-    background-color: white;
-    width:100%;
-    height: auto;
-    bottom: 0;
-    left: 0;
-    transition: 0.5s all ease-in;
-
-    &.hidden {
-      bottom: -67px;
     }
   }
 }
