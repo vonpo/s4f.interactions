@@ -3,3 +3,7 @@
 
 #unit test
 `test:unit`
+
+#build
+`r.js -o app.build.js`
+
