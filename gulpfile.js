@@ -76,16 +76,16 @@ gulp.task('optimizer', function () {
         .pipe(requirejsOptimize({
             baseUrl: './dist/public/js/app',
             paths: {
-                react: '../../../../node_modules/react/dist/react',
-                ReactDom: '../../../../node_modules/react-dom/dist/react-dom',
-                ReactRouter: '../../../../node_modules/react-router/umd/ReactRouter',
+                react: '../../../../node_modules/react/dist/react.min',
+                ReactDom: '../../../../node_modules/react-dom/dist/react-dom.min',
+                ReactRouter: '../../../../node_modules/react-router/umd/ReactRouter.min',
                 storage: 'storage/storage',
                 fetch: '../../../../node_modules/whatwg-fetch/fetch',
-                Promise: '../../../../node_modules/promise-polyfill/promise',
+                Promise: '../../../../node_modules/promise-polyfill/promise.min',
                 redux: '../../../../node_modules/redux/dist/redux',
-                ReactRedux: '../../../../node_modules/react-redux/dist/react-redux',
-                reduxLogger: '../../../../node_modules/redux-logger/dist/index',
-                reduxThunk: '../../../../node_modules/redux-thunk/dist/redux-thunk',
+                ReactRedux: '../../../../node_modules/react-redux/dist/react-redux.min',
+                reduxLogger: '../../../../node_modules/redux-logger/dist/index.min',
+                reduxThunk: '../../../../node_modules/redux-thunk/dist/redux-thunk.min',
                 Reselect: '../../../../node_modules/reselect/dist/reselect',
                 _: '../../../../node_modules/lodash/lodash.min',
                 classnames: '../../../../node_modules/classnames/index'
