@@ -18,8 +18,25 @@ app.set('view engine', 'ejs');
 app.set('views', __dirname + '/public/partials/');
 app.use('/api/poll', poll);
 app.use('/', staticFiles);
+
+app.all('/favicon.ico', function (req, res) {
+    res.sendFile('favicon.ico', {root: __dirname + '/'});
+});
+
+app.use('/demo', function (req, res) {
+    res.redirect(config.get('bigScreenDemo'));
+});
+
+app.all('/admin*', function(req, res) {
+    res.redirect('https://admin.screen4fans.com')
+});
+
 app.all('*', function (req, res) {
-    res.render(config.get('index'), frontendConfig);
+    if (!req.url || req.url === '/') {
+        res.redirect('https://info.screen4fans.com')
+    } else {
+        res.render(config.get('index'), frontendConfig);
+    }
 });
 
 var server = http.listen(config.get('server.port'), function () {
