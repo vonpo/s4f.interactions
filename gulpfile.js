@@ -11,6 +11,7 @@ var minifyCss = require('gulp-minify-css');
 var runSequence = require('run-sequence');
 var requirejsOptimize = require('gulp-requirejs-optimize');
 var rename = require('gulp-rename');
+var babel = require('gulp-babel');
 
 gulp.task('less', function () {
     return gulp.src('./dist/public/css/main.less')
@@ -63,14 +64,11 @@ gulp.task('createDist', function () {
 });
 
 gulp.task('jsx', function() {
-    return gulp.src('./public/js/**/*.jsx')
-        .pipe(jsx({
-            factory: 'React.createClass'
-        }))
-        .pipe(rename({
-            extname: '.js'
-        }))
-        .pipe(gulp.dest('./dist/public/js'));
+    return gulp.src('./public/js/**/*.jsx').
+        pipe(babel({
+            plugins: ['transform-react-jsx']
+        })).
+        pipe(gulp.dest('./dist/public/js'));
 });
 
 gulp.task('optimizer', function () {
@@ -78,16 +76,16 @@ gulp.task('optimizer', function () {
         .pipe(requirejsOptimize({
             baseUrl: './dist/public/js/app',
             paths: {
-                react: '../../../../node_modules/react/dist/react.min',
-                ReactDom: '../../../../node_modules/react-dom/dist/react-dom.min',
-                ReactRouter: '../../../../node_modules/react-router/umd/ReactRouter.min',
+                react: '../../../../node_modules/react/dist/react',
+                ReactDom: '../../../../node_modules/react-dom/dist/react-dom',
+                ReactRouter: '../../../../node_modules/react-router/umd/ReactRouter',
                 storage: 'storage/storage',
                 fetch: '../../../../node_modules/whatwg-fetch/fetch',
-                Promise: '../../../../node_modules/promise-polyfill/promise.min',
+                Promise: '../../../../node_modules/promise-polyfill/promise',
                 redux: '../../../../node_modules/redux/dist/redux',
-                ReactRedux: '../../../../node_modules/react-redux/dist/react-redux.min',
-                reduxLogger: '../../../../node_modules/redux-logger/dist/index.min',
-                reduxThunk: '../../../../node_modules/redux-thunk/dist/redux-thunk.min',
+                ReactRedux: '../../../../node_modules/react-redux/dist/react-redux',
+                reduxLogger: '../../../../node_modules/redux-logger/dist/index',
+                reduxThunk: '../../../../node_modules/redux-thunk/dist/redux-thunk',
                 Reselect: '../../../../node_modules/reselect/dist/reselect',
                 _: '../../../../node_modules/lodash/lodash.min',
                 classnames: '../../../../node_modules/classnames/index'
