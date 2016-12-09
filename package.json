@@ -37,6 +37,7 @@
   "devDependencies": {
     "astrolabe": "^0.3.6",
     "babel-plugin-transform-react-jsx": "^6.8.0",
+    "bigscreen-logger": "^1.0.1",
     "eslint": "^3.11.0",
     "eslint-plugin-react": "^6.7.1",
     "expect.js": "^0.3.1",
