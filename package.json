@@ -49,6 +49,7 @@
     "gulp-mocha": "^3.0.1",
     "gulp-requirejs-optimize": "^1.2.0",
     "gulp-watch": "^4.3.11",
+    "jimp": "^0.2.27",
     "less-plugin-autoprefix": "^1.5.1",
     "mocha-jenkins-reporter": "^0.3.1",
     "mockery": "^2.0.0",
