@@ -59,15 +59,18 @@ gulp.task('test:unit:backend', function () {
 gulp.task('createDist', function () {
     return gulp.src(['public/js/**/*.*', 'public/css/**/*.*'])
         .pipe(gulpCopy('dist'))
-        .pipe(gulp.dest('dist'));
+        .pipe(gulp.dest('./dist'));
 });
 
 gulp.task('jsx', function() {
-    return gulp.src('dist/public/js/**/*.jsx')
+    return gulp.src('./public/js/**/*.jsx')
         .pipe(jsx({
             factory: 'React.createClass'
         }))
-        .pipe(gulp.dest('dist/js'));
+        .pipe(rename({
+            extname: '.js'
+        }))
+        .pipe(gulp.dest('./dist/public/js'));
 });
 
 gulp.task('optimizer', function () {
