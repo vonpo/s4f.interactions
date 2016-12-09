@@ -68,11 +68,11 @@ gulp.task('jsx', function() {
         pipe(babel({
             plugins: ['transform-react-jsx']
         })).
-        pipe(gulp.dest('./dist/public/js'));
+        pipe(gulp.dest('./public/js'));
 });
 
 gulp.task('optimizer', function () {
-    return gulp.src('dist/public/js/app/main.js')
+    return gulp.src('./public/js/app/main.js')
         .pipe(requirejsOptimize({
             baseUrl: './dist/public/js/app',
             paths: {
