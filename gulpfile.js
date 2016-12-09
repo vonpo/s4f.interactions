@@ -82,7 +82,7 @@ gulp.task('optimizer', function () {
                 storage: 'storage/storage',
                 fetch: '../../../../node_modules/whatwg-fetch/fetch',
                 Promise: '../../../../node_modules/promise-polyfill/promise.min',
-                redux: '../../../../node_modules/redux/dist/redux',
+                redux: '../../../../node_modules/redux/dist/redux.min',
                 ReactRedux: '../../../../node_modules/react-redux/dist/react-redux.min',
                 reduxLogger: '../../../../node_modules/redux-logger/dist/index.min',
                 reduxThunk: '../../../../node_modules/redux-thunk/dist/redux-thunk.min',
