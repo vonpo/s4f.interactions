@@ -1,6 +1,6 @@
 exports.config = {
 	//seleniumAddress: 'http://localhost:4444/wd/hub',
-	specs: ['smoke.js'],
+	specs: ['specs/vote/vote-demo.spec.js', 'specs/vote/vote-delayed.spec.js'],
 	baseUrl: 'http://localhost:8085',
 	suites: {
 		'vote-winner': 'specs/vote/vote-winner.spec.js',
