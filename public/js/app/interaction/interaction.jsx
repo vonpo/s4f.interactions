@@ -45,6 +45,10 @@ define([
         componentDidMount: function () {
             this.props.fetchInteraction(this.interactionId);
             this.onScroll = _.debounce(function () {
+                if(!this.header) {
+                    return;
+                }
+
                 var header = this.header.getBoundingClientRect();
                 this.setState({anchoredToTop: header.top >= 0, anchoredToBottom: window.innerHeight === header.bottom})
 
