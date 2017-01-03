@@ -117,7 +117,7 @@ define([
                     vote: this.props.vote,
                     voted: this.props.voted,
                     wait: !this.props.canVoteAgain,
-                    isStarted: this.props.isStarted,
+                    isNotStarted: this.props.isNotStarted,
                     isFinished: this.props.isFinished,
                     restartVote: this.restartVote,
                     anchoredToTop: this.state.anchoredToTop,
