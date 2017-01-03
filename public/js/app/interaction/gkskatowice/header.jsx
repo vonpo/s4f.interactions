@@ -72,6 +72,33 @@ define(['react'], function (React) {
                     <a className="padding--vertical--medium" href="http://www.aasapolska.pl" target="_blank"><img src="/img/katowice/logo-lewe2big.png" /></a>
                 </div>
             },
+            displayWhenNotStarted() {
+                if(this.props.isStarted) {
+                    return null;
+                }
+
+                return  <div className="flex center center-items">
+                    <div className="question-text big margin--vertical--big ui-text-align--center">
+                        KONKURS JESZCZE SIĘ NIE ROZPOCZĄŁ
+                    </div>
+
+                    <a className="padding--vertical--medium" href="http://www.aasapolska.pl" target="_blank"><img src="/img/katowice/logo-lewe2big.png" /></a>
+                </div>
+            },
+            displayWhenFinished() {
+                if(!this.props.isFinished) {
+                    return null;
+                }
+
+                return  <div className="flex center center-items">
+                    <div className="question-text big margin--vertical--big ui-text-align--center">
+                        KONKURS ZOSTAŁ ZAKOŃCZONY <br/>
+                        DZIĘKUJEMY ZA UDZIAŁ W ZABAWIE
+                    </div>
+
+                    <a className="padding--vertical--medium" href="http://www.aasapolska.pl" target="_blank"><img src="/img/katowice/logo-lewe2big.png" /></a>
+                </div>
+            },
             render: function () {
                 return <div className="header--katowice-bg">
                     <div style={{height: '80px'}}>
@@ -104,12 +131,13 @@ define(['react'], function (React) {
                             </svg>
                         </div>
                     </div>
+                    {this.displayWhenNotStarted()}
                     {this.displayOnVote()}
                     {this.displayOnVoteDone()}
+                    {this.displayWhenFinished()}
                 </div>;
             }
-        })
-        ;
+        });
 
     return Header;
 });

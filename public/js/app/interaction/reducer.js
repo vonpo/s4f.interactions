@@ -33,10 +33,20 @@ define(['_', 'interaction/actions',], function (_, InteractionActions) {
                     return answer.enabled;
                 });
 
+                var phase = state.phase || 'vote';
+
+                if (!action.value.isStarted) {
+                    phase = 'notStarted';
+                } else if (action.value.finished) {
+                    phase = 'finished';
+                } else if (action.value.isStarted && state.phase === 'notStarted') {
+                    phase = 'vote';
+                }
+
                 return _.extend({}, state, {
                     loading: false,
                     interaction: action.value,
-                    phase: state.phase || 'vote'
+                    phase: phase
                 });
             }
             case InteractionActions.voteInteraction.SUCCESS: {

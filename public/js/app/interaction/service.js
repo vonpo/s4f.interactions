@@ -38,6 +38,13 @@ define(['storage'], function (storage) {
             },
             body: JSON.stringify({vote: {option: vote}})
         })
+            .then(function (response) {
+                if (response.status !== 200) {
+                    return Promise.reject({ locked : response.status === 423})
+                }
+
+                return response;
+            })
             .then(saveTempVote.bind(null, interactionId, vote));
     }
 

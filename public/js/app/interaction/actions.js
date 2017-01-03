@@ -27,7 +27,11 @@ define([
                 .then(function () {
                     dispatch({type: VOTE_INTERACTION.SUCCESS});
                 })
-                .catch(function () {
+                .catch(function (err) {
+                    if(err && err.locked) {
+                        return getInteraction(interactionName)(dispatch);
+                    }
+
                     dispatch({type: VOTE_INTERACTION.FAIL});
                 })
         }
