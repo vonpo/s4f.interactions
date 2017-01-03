@@ -72,7 +72,7 @@ gulp.task('jsx', function() {
 });
 
 gulp.task('optimizer', function () {
-    return gulp.src('./public/js/app/main.js')
+    return gulp.src('./dist/public/js/app/main.js')
         .pipe(requirejsOptimize({
             baseUrl: './dist/public/js/app',
             paths: {

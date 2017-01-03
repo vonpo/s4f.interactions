@@ -73,7 +73,7 @@ define(['react'], function (React) {
                 </div>
             },
             displayWhenNotStarted() {
-                if(this.props.isStarted) {
+                if(!this.props.isNotStarted) {
                     return null;
                 }
 

@@ -150,7 +150,7 @@ define([
                 interaction: data.interaction,
                 selectedItem: data.selectedItem,
                 canVoteAgain: data.canVoteAgain,
-                isStarted: data.phase !== 'notStarted',
+                isNotStarted: data.phase === 'notStarted',
                 isFinished: data.phase === 'finished',
                 vote: data.phase === 'vote' || data.voteInProgress === true,
                 voted: data.phase === 'voteDone' && data.voteInProgress === false
