@@ -39,4 +39,33 @@ describe('interaction reducer', function () {
 
         expect(result.voteInProgress).to.equal(true);
     });
+
+    it('should set correct phase finished', function () {
+        var state = { };
+        var interaction = { isStarted: true, finished : true, data : { options: [] } };
+        var result = this.Reducer(state, { type: this.Actions.getInteraction.SUCCESS, value : interaction });
+
+        expect(result.phase).to.equal('finished');
+    });
+
+    it('should set correct phase notStarted', function () {
+        var state = { };
+        var interaction = { isStarted: false, finished : true, data : { options: [] } };
+        var result = this.Reducer(state, { type: this.Actions.getInteraction.SUCCESS, value : interaction });
+
+        expect(result.phase).to.equal('notStarted');
+    });
+
+    it('should set correct phase when change from notStarted to started', function () {
+        var state = { };
+        var interaction = { isStarted: false, finished : true, data : { options: [] } };
+        var result = this.Reducer(state, { type: this.Actions.getInteraction.SUCCESS, value : interaction });
+
+        expect(result.phase).to.equal('notStarted');
+
+        interaction = { isStarted: true, finished : false, data : { options: [] } };
+        result = this.Reducer(result, { type: this.Actions.getInteraction.SUCCESS, value : interaction });
+
+        expect(result.phase).to.equal('vote');
+    });
 });

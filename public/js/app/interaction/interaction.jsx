@@ -18,6 +18,22 @@ define([
         return data;
     };
 
+    var intervalId = null;
+
+    function startRefreshInteraction(onInterval) {
+        if(intervalId !== null) {
+            return;
+        }
+
+        intervalId = setInterval(onInterval, 1000 * 30); // 30 sec
+    }
+
+    function stopRefreshInteraction() {
+        if(intervalId !== null) {
+            clearInterval(intervalId);
+        }
+    }
+
     var Interaction = React.createClass({
         getInitialState: function () {
             this.interactionId = UrlService.extractUrl(location.pathname)[0];
@@ -27,19 +43,30 @@ define([
             };
         },
         componentWillReceiveProps: function (nextProps) {
-            if(nextProps.interaction && !this.props.interaction) {
-                var directory = nextProps.interaction.data.directory;
+            if(nextProps.interaction) {
+                if(!this.props.interaction) {
+                    var directory = nextProps.interaction.data.directory;
 
-                require(['interaction/' + directory + '/header',
-                        'interaction/' + directory + '/footer',
-                        'interaction/' + directory + '/content'],
-                    function (HeaderContent, FooterContent, Content) {
-                        this.HeaderContent = HeaderContent;
-                        this.FooterContent = FooterContent;
-                        this.Content = Content;
-                        this.forceUpdate();
+                    require(['interaction/' + directory + '/header',
+                            'interaction/' + directory + '/footer',
+                            'interaction/' + directory + '/content'],
+                        function (HeaderContent, FooterContent, Content) {
+                            this.HeaderContent = HeaderContent;
+                            this.FooterContent = FooterContent;
+                            this.Content = Content;
+                            this.forceUpdate();
 
-                    }.bind(this));
+                        }.bind(this));
+                }
+
+                if(!nextProps.interaction.isStarted && !nextProps.interaction.isFinished) {
+                    var refreshInteraction = this.props.fetchInteraction.bind(this, this.interactionId);
+                    startRefreshInteraction(refreshInteraction);
+                }
+
+                if(nextProps.interaction.isStarted) {
+                    stopRefreshInteraction();
+                }
             }
         },
         componentDidMount: function () {
@@ -90,6 +117,8 @@ define([
                     vote: this.props.vote,
                     voted: this.props.voted,
                     wait: !this.props.canVoteAgain,
+                    isStarted: this.props.isStarted,
+                    isFinished: this.props.isFinished,
                     restartVote: this.restartVote,
                     anchoredToTop: this.state.anchoredToTop,
                     selectItemDone: this.onSelectAnimationDone,
@@ -116,10 +145,13 @@ define([
     var mapStateToProps = Reselect.createSelector(
         [getInteraction],
         function (data) {
+
             return {
                 interaction: data.interaction,
                 selectedItem: data.selectedItem,
                 canVoteAgain: data.canVoteAgain,
+                isStarted: data.phase !== 'notStarted',
+                isFinished: data.phase === 'finished',
                 vote: data.phase === 'vote' || data.voteInProgress === true,
                 voted: data.phase === 'voteDone' && data.voteInProgress === false
             }
