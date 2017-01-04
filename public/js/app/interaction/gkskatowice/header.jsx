@@ -72,20 +72,21 @@ define(['react'], function (React) {
                     <a className="padding--vertical--medium" href="http://www.aasapolska.pl" target="_blank"><img src="/img/katowice/logo-lewe2big.png" /></a>
                 </div>
             },
-            displayWhenNotStarted() {
-                if(!this.props.isNotStarted) {
-                    return null;
-                }
+        displayWhenNotStarted: function () {
+            if (!this.props.isNotStarted) {
+                return null;
+            }
 
-                return  <div className="flex center center-items">
-                    <div className="question-text big margin--vertical--big ui-text-align--center">
-                        KONKURS JESZCZE SIĘ NIE ROZPOCZĄŁ
-                    </div>
-
-                    <a className="padding--vertical--medium" href="http://www.aasapolska.pl" target="_blank"><img src="/img/katowice/logo-lewe2big.png" /></a>
+            return <div className="flex center center-items">
+                <div className="question-text big margin--vertical--big ui-text-align--center">
+                    KONKURS JESZCZE SIĘ NIE ROZPOCZĄŁ
                 </div>
-            },
-            displayWhenFinished() {
+
+                <a className="padding--vertical--medium" href="http://www.aasapolska.pl" target="_blank"><img
+                    src="/img/katowice/logo-lewe2big.png"/></a>
+            </div>
+        },
+            displayWhenFinished: function () {
                 if(!this.props.isFinished) {
                     return null;
                 }
