@@ -59,8 +59,8 @@ define(['react'], function (React) {
                     </div>
                     
                     {!this.props.wait ?
-                    <button className="button--gkskatowice"  id="oneMoreTime">
-                        <div onClick={this.props.restartVote} className="ui-position--relative padding--horizontal--medium padding--vertical--medium md-headline ui-text-align--center ">
+                    <button onClick={this.props.restartVote}  className="button--gkskatowice"  id="oneMoreTime">
+                        <div className="ui-position--relative padding--horizontal--medium padding--vertical--medium md-headline ui-text-align--center ">
                             ZAGŁOSUJ JESZCZE RAZ!
                         </div>
                     </button> : null}
@@ -86,7 +86,7 @@ define(['react'], function (React) {
                     src="/img/katowice/logo-lewe2big.png"/></a>
             </div>
         },
-            displayWhenFinished: function () {
+            displayWhenFinished: function() {
                 if(!this.props.isFinished) {
                     return null;
                 }
