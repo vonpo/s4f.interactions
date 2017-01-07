@@ -152,10 +152,10 @@ define([
                 selectedItem: data.selectedItem,
                 canVoteAgain: data.canVoteAgain,
                 isNotStarted: data.phase === 'notStarted',
-                isFinished: data.phase === 'finished' && data.voteInProgress !== false,
-                isFailed: data.phase === 'voteFail' && data.voteInProgress !== false,
+                isFinished: data.phase === 'finished' && !data.voteInProgress,
+                isFailed: data.phase === 'voteFail' && !data.voteInProgress,
                 vote: data.phase === 'vote' || data.voteInProgress === true,
-                voted: data.phase === 'voteDone' && data.voteInProgress !== false
+                voted: data.phase === 'voteDone' && !data.voteInProgress
             }
         }
     );
