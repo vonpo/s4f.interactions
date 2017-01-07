@@ -86,6 +86,23 @@ define(['react'], function (React) {
                     src="/img/katowice/logo-lewe2big.png"/></a>
             </div>
         },
+        displayWhenFail: function () {
+            if(!this.props.isFailed) {
+                return null;
+            }
+
+            return <div className="flex center center-items">
+                <div className="question-text big margin--vertical--big ui-text-align--center">
+                    UPS... COŚ POSZŁO NIE TAK. ODŚWIEŻ STRONĘ I SPRÓBUJ JESZCZE RAZ.
+                </div>
+
+                <button onClick={this.props.restartVote}  className="button--gkskatowice"  id="oneMoreTime">
+                    <div className="ui-position--relative padding--horizontal--medium padding--vertical--medium md-headline ui-text-align--center ">
+                        ZAGŁOSUJ JESZCZE RAZ!
+                    </div>
+                </button>
+            </div>
+        },
             displayWhenFinished: function() {
                 if(!this.props.isFinished) {
                     return null;
@@ -136,6 +153,7 @@ define(['react'], function (React) {
                     {this.displayOnVote()}
                     {this.displayOnVoteDone()}
                     {this.displayWhenFinished()}
+                    {this.displayWhenFail()}
                 </div>;
             }
         });
