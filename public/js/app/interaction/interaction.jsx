@@ -122,6 +122,7 @@ define([
                     restartVote: this.restartVote,
                     anchoredToTop: this.state.anchoredToTop,
                     selectItemDone: this.onSelectAnimationDone,
+                    isFailed: this.props.isFailed,
                     onClick: this.onSelectItem
                 })}
                 {React.createElement(this.FooterContent, {
@@ -151,7 +152,8 @@ define([
                 selectedItem: data.selectedItem,
                 canVoteAgain: data.canVoteAgain,
                 isNotStarted: data.phase === 'notStarted',
-                isFinished: data.phase === 'finished',
+                isFinished: data.phase === 'finished' && data.voteInProgress === false,
+                isFailed: data.phase === 'voteFail' && data.voteInProgress === false,
                 vote: data.phase === 'vote' || data.voteInProgress === true,
                 voted: data.phase === 'voteDone' && data.voteInProgress === false
             }
