@@ -1,9 +1,19 @@
 define(function () {
-    function saveLocal(key, value) {
+    function getTimeStamp() {
+        var date = new Date();
+
+        return date.getYear() + '' + date.getMonth() + '' + date.getDate();
+    }
+
+    function saveLocal(key, value, timeStamp) {
+        key = timeStamp ? key + getTimeStamp() : key;
+
         localStorage.setItem(key, JSON.stringify(value));
     }
 
-    function getLocal(key) {
+    function getLocal(key, timeStamp) {
+        key = timeStamp ? key + getTimeStamp() : key;
+
         var value = localStorage.getItem(key);
 
         if (value) {

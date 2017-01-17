@@ -6,7 +6,7 @@ var jsx = require('gulp-jsx');
 var less = require('gulp-less');
 var gulpCopy = require('gulp-copy');
 var LessAutoprefix = require('less-plugin-autoprefix');
-var autoprefix = new LessAutoprefix({ browsers: ['last 2 versions'] });
+var autoprefix = new LessAutoprefix({ browsers: ['last 6 versions'] });
 var minifyCss = require('gulp-minify-css');
 var runSequence = require('run-sequence');
 var requirejsOptimize = require('gulp-requirejs-optimize');
@@ -20,6 +20,15 @@ gulp.task('less', function () {
         }))
         .pipe(minifyCss())
         .pipe(rename('main.min.css'))
+        .pipe(gulp.dest('./public/css'));
+});
+
+gulp.task('less1', function () {
+    return gulp.src('./public/css/layout.less')
+        .pipe(less({
+            plugins: [autoprefix]
+        }))
+        .pipe(rename('test.min.css'))
         .pipe(gulp.dest('./public/css'));
 });
 
