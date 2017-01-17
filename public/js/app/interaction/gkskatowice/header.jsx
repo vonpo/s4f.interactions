@@ -69,7 +69,7 @@ define(['react'], function (React) {
                     <div id="voteInNextMinute" className="question-text ui-text-shadow ui-position--relative padding--horizontal--medium padding--vertical--medium md-headline ui-text-align--center">
                         ZAGŁOSUJ PONOWNIE PO UPŁYWIE MINUTY
                     </div> : null }
-                    <a className="padding--vertical--medium" href="http://www.aasapolska.pl" target="_blank"><img src="/img/katowice/logo-lewe2big.png" /></a>
+                    <a className="padding--vertical--medium" href="https://aasapolska.pl/?utm_source=s4fans&utm_campaign=GKSLOTOS&utm_medium=banner" target="_blank"><img src="/img/katowice/logo-lewe2big.png" /></a>
                 </div>
             },
         displayWhenNotStarted: function () {
@@ -82,7 +82,7 @@ define(['react'], function (React) {
                     KONKURS JESZCZE SIĘ NIE ROZPOCZĄŁ
                 </div>
 
-                <a className="padding--vertical--medium" href="http://www.aasapolska.pl" target="_blank"><img
+                <a className="padding--vertical--medium" href="https://aasapolska.pl/?utm_source=s4fans&utm_campaign=GKSLOTOS&utm_medium=banner" target="_blank"><img
                     src="/img/katowice/logo-lewe2big.png"/></a>
             </div>
         },
@@ -114,7 +114,7 @@ define(['react'], function (React) {
                         DZIĘKUJEMY ZA UDZIAŁ W ZABAWIE
                     </div>
 
-                    <a className="padding--vertical--medium" href="http://www.aasapolska.pl" target="_blank"><img src="/img/katowice/logo-lewe2big.png" /></a>
+                    <a className="padding--vertical--medium" href="https://aasapolska.pl/?utm_source=s4fans&utm_campaign=GKSLOTOS&utm_medium=banner" target="_blank"><img src="/img/katowice/logo-lewe2big.png" /></a>
                 </div>
             },
             render: function () {
