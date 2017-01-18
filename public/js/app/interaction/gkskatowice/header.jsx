@@ -1,4 +1,4 @@
-define(['react'], function (React) {
+define(['react', 'storage'], function (React, Storage) {
 
     var Header = React.createClass({
             displayOnVote: function () {
@@ -6,6 +6,7 @@ define(['react'], function (React) {
                     return null;
                 }
 
+                this.voting = true;
                 return <div>
                     <div
                         className="question-select question-text big ui-position--relative padding--horizontal--small padding--vertical--medium ui-text-align--center">
@@ -49,8 +50,15 @@ define(['react'], function (React) {
                 </div>
             },
             displayOnVoteDone: function () {
-                if(!this.props.voted) {
+                if (!this.props.voted) {
                     return null;
+                }
+
+                var alreadyRedirected = Storage.getLocal('aasaRedirected', true) === 1;
+
+                if (this.voting && !alreadyRedirected) {
+                    Storage.saveLocal('aasaRedirected', 1, true);
+                    window.location = 'https://www.aasapolska.pl/';
                 }
 
                 return  <div className="flex center center-items">
