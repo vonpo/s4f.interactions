@@ -1,4 +1,7 @@
 define(['react', 'storage'], function (React, Storage) {
+    function canRedirect(query) {
+        return !query || query.indexOf('redirect=false') === -1;
+    }
 
     var Header = React.createClass({
             displayOnVote: function () {
@@ -56,9 +59,9 @@ define(['react', 'storage'], function (React, Storage) {
 
                 var alreadyRedirected = Storage.getLocal('aasaRedirected', true) === 1;
 
-                if (this.voting && !alreadyRedirected) {
+                if (this.voting && !alreadyRedirected && canRedirect(window.location.search)) {
                     Storage.saveLocal('aasaRedirected', 1, true);
-                    window.location = 'https://www.aasapolska.pl/';
+                    window.location = 'https://aasapolska.pl/?utm_source=s4fans&utm_campaign=GKSLOTOS&utm_medium=banner';
                 }
 
                 return  <div className="flex center center-items">

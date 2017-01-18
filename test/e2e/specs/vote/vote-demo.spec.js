@@ -28,6 +28,7 @@ describe('should vote in the poll', function () {
 
 
     it('should display that user has took part in poll', function() {
+        browser.wait(EC.elementToBeClickable(votePage.oneMoreTime));
         expect(votePage.oneMoreTime.isPresent()).toBe(true);
         votePage.oneMoreTime.click();
     });
