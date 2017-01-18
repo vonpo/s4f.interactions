@@ -69,7 +69,11 @@ define(['react'], function (React) {
                     <div id="voteInNextMinute" className="question-text ui-text-shadow ui-position--relative padding--horizontal--medium padding--vertical--medium md-headline ui-text-align--center">
                         ZAGŁOSUJ PONOWNIE PO UPŁYWIE MINUTY
                     </div> : null }
-                    <a className="padding--vertical--medium" href="https://aasapolska.pl/?utm_source=s4fans&utm_campaign=GKSLOTOS&utm_medium=banner" target="_blank"><img src="/img/katowice/logo-lewe2big.png" /></a>
+
+                    <div className="margin--vertical--big padding--vertical--medium">
+                        <div className="ui-text-align--center question-text">Wejdź na stronę</div>
+                        <a className="padding--vertical--medium" href="https://aasapolska.pl/?utm_source=s4fans&utm_campaign=GKSLOTOS&utm_medium=banner" target="_blank"><img src="/img/katowice/logo-lewe2big.png" /></a>
+                    </div>
                 </div>
             },
         displayWhenNotStarted: function () {
@@ -81,9 +85,10 @@ define(['react'], function (React) {
                 <div className="question-text big margin--vertical--big ui-text-align--center">
                     KONKURS JESZCZE SIĘ NIE ROZPOCZĄŁ
                 </div>
-
-                <a className="padding--vertical--medium" href="https://aasapolska.pl/?utm_source=s4fans&utm_campaign=GKSLOTOS&utm_medium=banner" target="_blank"><img
-                    src="/img/katowice/logo-lewe2big.png"/></a>
+                <div className="margin--vertical--big padding--vertical--medium">
+                    <div className="ui-text-align--center question-text">Wejdź na stronę</div>
+                    <a className="padding--vertical--medium" href="https://aasapolska.pl/?utm_source=s4fans&utm_campaign=GKSLOTOS&utm_medium=banner" target="_blank"><img src="/img/katowice/logo-lewe2big.png" /></a>
+                </div>
             </div>
         },
         displayWhenFail: function () {
@@ -114,7 +119,10 @@ define(['react'], function (React) {
                         DZIĘKUJEMY ZA UDZIAŁ W ZABAWIE
                     </div>
 
-                    <a className="padding--vertical--medium" href="https://aasapolska.pl/?utm_source=s4fans&utm_campaign=GKSLOTOS&utm_medium=banner" target="_blank"><img src="/img/katowice/logo-lewe2big.png" /></a>
+                    <div className="margin--vertical--big padding--vertical--medium">
+                        <div className="ui-text-align--center question-text">Wejdź na stronę</div>
+                        <a className="padding--vertical--medium" href="https://aasapolska.pl/?utm_source=s4fans&utm_campaign=GKSLOTOS&utm_medium=banner" target="_blank"><img src="/img/katowice/logo-lewe2big.png" /></a>
+                    </div>
                 </div>
             },
             render: function () {
