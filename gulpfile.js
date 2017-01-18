@@ -23,6 +23,15 @@ gulp.task('less', function () {
         .pipe(gulp.dest('./public/css'));
 });
 
+gulp.task('less1', function () {
+    return gulp.src('./public/css/layout.less')
+        .pipe(less({
+            plugins: [autoprefix]
+        }))
+        .pipe(rename('test.min.css'))
+        .pipe(gulp.dest('./public/css'));
+});
+
 gulp.task('test:unit', function () {
     return watch(['public/js/**/*.js'], function () {
         gulp.src('public/**/*.spec.js', {read: false})
