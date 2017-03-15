@@ -5,7 +5,7 @@ define(['react',
             var footer = classnames('footer--katowice ui-position--fixed bring-to-top', {
                 hidden: !this.props.anchoredToTop && !this.props.anchoredToBottom
             });
-
+			
             return  <div className={footer}>
                 <div className="gradient"></div>
                 <div className="flex row center center-items">
