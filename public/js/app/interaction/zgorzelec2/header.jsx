@@ -5,7 +5,7 @@ define(['react', 'classnames',], function (React, classnames) {
             if(!this.props.voted) {
                 return null;
             }
-
+            
             return  <div className="flex center center-items">
                 <div className="text ui-text-shadow big margin--vertical--big ui-text-align--center">
                     ZERKNIJ NA TELEBIM, ŻEBY ZOBACZYĆ KTO JEST NAJLEPSZY!

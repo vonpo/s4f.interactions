@@ -1,7 +1,7 @@
 define(['react',
     'classnames',
     'ui/animation/animation'], function (React, classnames, animation) {
-
+    
     return React.createClass({
         onClick: function () {
             this.props.onClick(this.props.question.option);

@@ -2,7 +2,7 @@ define(['react', 'storage'], function (React, Storage) {
     function canRedirect(query) {
         return !query || query.indexOf('redirect=false') === -1;
     }
-
+    
     var Header = React.createClass({
             displayOnVote: function () {
                 if(!this.props.vote) {

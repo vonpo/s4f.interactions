@@ -10,7 +10,7 @@ define(['react', 'classnames',], function (React, classnames) {
                 <div className="question-text ui-text-shadow big margin--vertical--big ui-text-align--center">
                     ZERKNIJ NA TELEBIM!
                 </div>
-
+                
                 {!this.props.wait ?
                     <button className="button ui-text-shadow" id="oneMoreTime">
                         <div onClick={this.props.restartVote} className="ui-position--relative padding--horizontal--medium padding--vertical--medium md-headline ui-text-align--center ">
