@@ -10,7 +10,7 @@ define(['react',
                 <div className="zgorzelec-gradient"></div>
                 <div className="flex row center-items space-between padding--vertical--medium">
                     <img className="padding--horizontal--big" src="/img/zgorzelec/logo_s4f.png" />
-                    <img className="padding--horizontal--big" src="/img/zgorzelec/logo_turow.png" />
+                    <img className="padding--horizontal--big" style={{height: '50px'}} src="/img/zgorzelec/logo_turow.png" />
                 </div>
             </div>
         }

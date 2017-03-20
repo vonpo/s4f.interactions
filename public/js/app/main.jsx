@@ -52,7 +52,6 @@ define([
 				.then(function () {
 					root.classList.remove('ui-transparent');
 					loader.classList.add('hide');
-					console.info('xxx')
 				});
 		}
 	);
