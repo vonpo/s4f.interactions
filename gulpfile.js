@@ -84,9 +84,9 @@ gulp.task('optimizer', function () {
     return gulp.src('./dist/public/js/app/main.js')
         .pipe(requirejsOptimize({
             deps: [
-                'interaction/zgorzelec2/header',
-                'interaction/zgorzelec2/footer',
-                'interaction/zgorzelec2/content',
+                'interaction/zgorzelec1/header',
+                'interaction/zgorzelec1/footer',
+                'interaction/zgorzelec1/content',
                 'interaction/zgorzelec2/header',
                 'interaction/zgorzelec2/footer',
                 'interaction/zgorzelec2/content',
