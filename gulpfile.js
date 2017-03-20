@@ -83,6 +83,19 @@ gulp.task('jsx', function() {
 gulp.task('optimizer', function () {
     return gulp.src('./dist/public/js/app/main.js')
         .pipe(requirejsOptimize({
+            deps: [
+                'interaction/zgorzelec2/header',
+                'interaction/zgorzelec2/footer',
+                'interaction/zgorzelec2/content',
+                'interaction/zgorzelec2/header',
+                'interaction/zgorzelec2/footer',
+                'interaction/zgorzelec2/content',
+                'interaction/gkskatowice/header',
+                'interaction/gkskatowice/footer',
+                'interaction/gkskatowice/content',
+                'interaction/demo/header',
+                'interaction/demo/footer',
+                'interaction/demo/content'],
             baseUrl: './dist/public/js/app',
             paths: {
                 react: '../../../../node_modules/react/dist/react.min',
