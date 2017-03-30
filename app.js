@@ -33,9 +33,9 @@ app.all('/admin*', function(req, res) {
 
 app.all('*', function (req, res) {
     var headers = req.headers;
-    
+
     if(headers && headers.host && headers.host.indexOf('pgeturow.mobi') >= 0) {
-        res.redirect('/zgorzelec1');
+        res.redirect('https://screen4fans.com/zgorzelec1');
     }
     else if (!req.url || req.url === '/') {
         res.redirect('https://info.screen4fans.com')
