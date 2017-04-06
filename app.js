@@ -43,7 +43,7 @@ app.all('*', function (req, res) {
         res.redirect('https://screen4fans.com/zgorzelec1');
     } else if (isFromDomain(headers, 'gkskatowice.mobi')) {
         res.redirect('https://screen4fans.com/gkskatowice');
-    } else if (isFromDomain('lisbon.screen4fans.com')) {
+    } else if (isFromDomain(headers, 'lisbon.screen4fans.com')) {
         res.redirect('https://screen4fans.com/demo-vote');
     } else if (!req.url || req.url === '/') {
         res.redirect('https://info.screen4fans.com')
