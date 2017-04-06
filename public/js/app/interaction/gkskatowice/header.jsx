@@ -61,7 +61,7 @@ define(['react', 'storage'], function (React, Storage) {
 
                 if (this.voting && !alreadyRedirected && canRedirect(window.location.search)) {
                     Storage.saveLocal('aasaRedirected', 1, true);
-                    window.location = 'http://aasapolska.pl/?utm_source=s4fans&utm_campaign=GKSBBTS&utm_medium=banner';
+                    window.location = 'https://www.aasapolska.pl/?utm_source=s4fans&utm_medium=banner&utm_campaign=GKSWAW';
                 }
 
                 return  <div className="flex center center-items">
@@ -83,7 +83,7 @@ define(['react', 'storage'], function (React, Storage) {
 
                     <div className="margin--vertical--big padding--vertical--medium">
                         <div className="ui-text-align--center question-text">Wejdź na stronę</div>
-                        <a className="padding--vertical--medium" href="http://aasapolska.pl/?utm_source=s4fans&utm_campaign=GKSBBTS&utm_medium=banner" target="_blank"><img src="/img/katowice/logo-lewe2big.png" /></a>
+                        <a className="padding--vertical--medium" href="https://www.aasapolska.pl/?utm_source=s4fans&utm_medium=banner&utm_campaign=GKSWAW" target="_blank"><img src="/img/katowice/logo-lewe2big.png" /></a>
                     </div>
                 </div>
             },
@@ -98,7 +98,7 @@ define(['react', 'storage'], function (React, Storage) {
                 </div>
                 <div className="margin--vertical--big padding--vertical--medium">
                     <div className="ui-text-align--center question-text">Wejdź na stronę</div>
-                    <a className="padding--vertical--medium" href="http://aasapolska.pl/?utm_source=s4fans&utm_campaign=GKSBBTS&utm_medium=banner" target="_blank"><img src="/img/katowice/logo-lewe2big.png" /></a>
+                    <a className="padding--vertical--medium" href="https://www.aasapolska.pl/?utm_source=s4fans&utm_medium=banner&utm_campaign=GKSWAW" target="_blank"><img src="/img/katowice/logo-lewe2big.png" /></a>
                 </div>
             </div>
         },
@@ -132,7 +132,7 @@ define(['react', 'storage'], function (React, Storage) {
 
                     <div className="margin--vertical--big padding--vertical--medium">
                         <div className="ui-text-align--center question-text">Wejdź na stronę</div>
-                        <a className="padding--vertical--medium" href="http://aasapolska.pl/?utm_source=s4fans&utm_campaign=GKSBBTS&utm_medium=banner" target="_blank"><img src="/img/katowice/logo-lewe2big.png" /></a>
+                        <a className="padding--vertical--medium" href="https://www.aasapolska.pl/?utm_source=s4fans&utm_medium=banner&utm_campaign=GKSWAW" target="_blank"><img src="/img/katowice/logo-lewe2big.png" /></a>
                     </div>
                 </div>
             },
