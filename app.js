@@ -27,6 +27,11 @@ app.use('/demo', function (req, res) {
     res.redirect(config.get('bigScreenDemo'));
 });
 
+
+app.use('/demo1', function (req, res) {
+    res.redirect(config.get('lisbonDemo'));
+});
+
 app.all('/admin*', function (req, res) {
     res.redirect('https://admin.screen4fans.com')
 });
