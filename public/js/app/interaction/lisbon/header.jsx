@@ -6,10 +6,10 @@ define(['react'], function (React) {
             }
 
             return <div className="flex center-items center thanks">
-                <div className="md-title ui-text-align--center margin--vertical--big ui-text--white">THANKS FOR THE
+                <div className="md-title ui-text-align--center ui-text--white">THANKS FOR THE
                     VOTE
                 </div>
-                <div className="md-title ui-text-align--center margin--vertical--big ui-text--white">SEE RESULTS ON THE
+                <div className="md-title ui-text-align--center ui-text--white">SEE RESULTS ON THE
                     SCREEN!
                 </div>
                 <button id="oneMoreTime" onClick={this.props.restartVote} className="demo__option margin--vertical--big ui-text-align--center">
