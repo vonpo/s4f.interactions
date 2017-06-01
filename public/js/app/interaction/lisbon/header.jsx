@@ -43,7 +43,7 @@ define(['react'], function (React) {
                         </div>
                     </div>
                     <div className="ui-text-align--center margin--vertical--big ui-font--bold question text">
-                        Que equipa vai ganhar a liga NOS 16/17?
+                        Que equipa vai ganhar a liga nos 17/18?
                     </div>
                     <div>
                         <div className="buttons flex row space-around">
