@@ -22,41 +22,29 @@ app.use('/', staticFiles);
 app.all('/favicon.ico', function (req, res) {
     res.sendFile('favicon.ico', {root: __dirname + '/'});
 });
-
-app.use('/demo', function (req, res) {
-    res.redirect(config.get('bigScreenDemo'));
-});
-
-
-app.use('/demo1', function (req, res) {
-    res.redirect(config.get('lisbonDemo'));
-});
+//
+// app.use('/demo', function (req, res) {
+//     res.redirect(config.get('bigScreenDemo'));
+// });
+//
+//
+// app.use('/demo1', function (req, res) {
+//     res.redirect(config.get('lisbonDemo'));
+// });
 
 app.all('/admin*', function (req, res) {
     res.redirect('https://admin.screen4fans.com')
 });
 
 
-function isFromDomain(headers, domain) {
-    return (headers && headers.host && headers.host.indexOf(domain) >= 0)
-}
+// function isFromDomain(headers, domain) {
+//     return (headers && headers.host && headers.host.indexOf(domain) >= 0)
+// }
 
 app.all('*', function (req, res) {
     var headers = req.headers;
 
-    if (isFromDomain(headers, 'pgeturow.mobi')) {
-        res.redirect('https://screen4fans.com/zgorzelec1');
-    } else if (isFromDomain(headers, 'gkskatowice.mobi')) {
-        res.redirect('https://screen4fans.com/gkskatowice');
-    } else if (isFromDomain(headers, 'benfica.screen4fans.com')) {
-        res.redirect('https://screen4fans.com/lisbon');
-    } else if (isFromDomain(headers, 'lisbon.screen4fans.com')) {
-        res.redirect('https://screen4fans.com/lisbon');
-    } else if (!req.url || req.url === '/') {
-        res.redirect('https://info.screen4fans.com')
-    } else {
-        res.render(config.get('index'), frontendConfig);
-    }
+    res.render(config.get('index'), frontendConfig);
 });
 
 var server = http.listen(config.get('server.port'), function () {

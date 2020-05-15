@@ -15,7 +15,7 @@ exports.config = {
 	capabilities: {
 		browserName: 'chrome'
 	},
-	seleniumAddress: 'http://192.168.1.146:4445/wd/hub',
+	//seleniumAddress: 'http://192.168.1.146:4445/wd/hub',
 	directConnect: false,
 	//specs: ['specs/vote/vote-winner.spec.js', 'specs/vote/vote-best-player.spec.js'],
 	specs: ['specs/vote/vote-demo.spec.js', 'specs/vote/vote-delayed.spec.js'],
