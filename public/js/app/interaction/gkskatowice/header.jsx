@@ -61,7 +61,7 @@ define(['react', 'storage'], function (React, Storage) {
 
                 if (this.voting && !alreadyRedirected && canRedirect(window.location.search)) {
                     Storage.saveLocal('aasaRedirected', 1, true);
-                    window.location = 'https://www.aasapolska.pl/?utm_source=s4fans&utm_medium=banner&utm_campaign=GKSWAW';
+                    //window.location = 'https://www.aasapolska.pl/?utm_source=s4fans&utm_medium=banner&utm_campaign=GKSWAW';
                 }
 
                 return  <div className="flex center center-items">
@@ -81,10 +81,6 @@ define(['react', 'storage'], function (React, Storage) {
                         ZAGŁOSUJ PONOWNIE PO UPŁYWIE MINUTY
                     </div> : null }
 
-                    <div className="margin--vertical--big padding--vertical--medium">
-                        <div className="ui-text-align--center question-text">Wejdź na stronę</div>
-                        <a className="padding--vertical--medium" href="https://www.aasapolska.pl/?utm_source=s4fans&utm_medium=banner&utm_campaign=GKSWAW" target="_blank"><img src="/img/katowice/logo-lewe2big.png" /></a>
-                    </div>
                 </div>
             },
         displayWhenNotStarted: function () {
@@ -95,10 +91,6 @@ define(['react', 'storage'], function (React, Storage) {
             return <div className="flex center center-items">
                 <div className="question-text big margin--vertical--big ui-text-align--center">
                     KONKURS JESZCZE SIĘ NIE ROZPOCZĄŁ
-                </div>
-                <div className="margin--vertical--big padding--vertical--medium">
-                    <div className="ui-text-align--center question-text">Wejdź na stronę</div>
-                    <a className="padding--vertical--medium" href="https://www.aasapolska.pl/?utm_source=s4fans&utm_medium=banner&utm_campaign=GKSWAW" target="_blank"><img src="/img/katowice/logo-lewe2big.png" /></a>
                 </div>
             </div>
         },
@@ -128,11 +120,6 @@ define(['react', 'storage'], function (React, Storage) {
                     <div className="question-text big margin--vertical--big ui-text-align--center">
                         KONKURS ZOSTAŁ ZAKOŃCZONY <br/>
                         DZIĘKUJEMY ZA UDZIAŁ W ZABAWIE
-                    </div>
-
-                    <div className="margin--vertical--big padding--vertical--medium">
-                        <div className="ui-text-align--center question-text">Wejdź na stronę</div>
-                        <a className="padding--vertical--medium" href="https://www.aasapolska.pl/?utm_source=s4fans&utm_medium=banner&utm_campaign=GKSWAW" target="_blank"><img src="/img/katowice/logo-lewe2big.png" /></a>
                     </div>
                 </div>
             },
