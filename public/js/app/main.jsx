@@ -27,7 +27,7 @@ define([
 										 InteractionService,
 										 animation) {
 	var Provider = reactRedux.Provider;
-	var loggerMiddleware = reduxLogger();
+	var loggerMiddleware = reduxLogger.default();
 	var root = document.getElementById('content');
 	var loader = document.getElementById('main-loader');
 	var store = Redux.createStore(reducer,
