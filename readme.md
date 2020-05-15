@@ -3,7 +3,7 @@
 
 ## demo
 `https://interactions.hooper.pl/lisbon`
-[demo](https://raw.githubusercontent.com/vonpoland/s4f.poll/master/public/img/demo.png)
+[demo](https://raw.githubusercontent.com/vonpoland/s4f.interactions/master/public/img/demo.png)
 
 ## unit test
 `test:unit`
