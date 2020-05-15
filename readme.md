@@ -1,3 +1,11 @@
+## install
+`npm install`
+### Production
+`npm run gulp` // for production build 
+
+### Dev
+`NODE_ENV=YOUD_CONFIG npm run app.js`
+
 ## how to run
 `browser-sync start --proxy="http://localhost:8085" --files="public\js\**\*.js" --reload-debounce=2000`
 
