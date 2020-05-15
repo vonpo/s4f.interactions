@@ -36,23 +36,16 @@ define([
 			loggerMiddleware
 		));
 
-	var interactionId = UrlService.extractUrl(location.pathname)[0];
-
-	store.dispatch({
-		type: actions.boot,
-		value: {vote: InteractionService.getTempVote(interactionId)}
-	});
-
-	ReactDOM.render(<Provider store={store}>
-			<Interaction />
-		</Provider>,
-		root, function () {
-			animation
-				.animate(loader, 'fade-out')
-				.then(function () {
-					root.classList.remove('ui-transparent');
-					loader.classList.add('hide');
-				});
-		}
-	);
+    ReactDOM.render(<Provider store={store}>
+            <Interaction />
+        </Provider>,
+        root, function () {
+            animation
+                .animate(loader, 'fade-out')
+                .then(function () {
+                    root.classList.remove('ui-transparent');
+                    loader.classList.add('hide');
+                });
+        }
+    );
 });
