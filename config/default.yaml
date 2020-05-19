@@ -1,0 +1,12 @@
+server:
+  port: 8085
+index: 'index'
+maxAgeResources: 0
+database:
+  connection: mongodb://localhost:27017/s4f-development-web
+user:
+  storePhotoPath: '../uploads/users/{{id}}'
+  imageSize: 40
+bigScreenDemo: 'http://localhost:8888/demo/demo-vote?step=info&stay=true'
+lisbonDemo: 'http://localhost:8888/demo/lisbon?step=info&stay=true'
+nextVoteTime: 10
